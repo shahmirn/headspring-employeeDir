@@ -1,0 +1,17 @@
+{
+  "name": "headspring-employeeDir",
+  "version": "0.0.1",
+  "homepage": "https://github.com/shahmirn/headspring-employeeDir",
+  "authors": [
+    "Shahmir Noorani <shahmirn@gmail.com>"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+  ],
+  "dependencies": {
+    "angular": "~1.3.11"
+  }
+}
