@@ -1,3 +1,7 @@
 module.exports = {
-    install: {}
+    install: {
+      options: {
+        targetDir: './public/components'
+      }
+    }
 }
