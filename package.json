@@ -1,0 +1,13 @@
+{
+  "name": "headspring-employeeDir",
+  "description": "Headspring Employee Directory - front-end showcase",
+  "version": "0.0.1",
+  "author": {
+    "name": "Shahmir Noorani",
+    "email": "shahmirn@gmail.com"
+  },
+  "private": true,
+  "dependencies": {
+    "express": "^4.11.1"
+  }
+}
