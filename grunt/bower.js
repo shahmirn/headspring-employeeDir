@@ -1,7 +1,9 @@
+var path = require('path');
+
 module.exports = {
     install: {
       options: {
-        targetDir: './public/components'
+        targetDir: path.normalize('./.tmp')
       }
     }
 }
