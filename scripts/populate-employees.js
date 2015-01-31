@@ -12,7 +12,7 @@ employees.remove({}, function(err, result) {
     for (var count = 1; count <= max; count++) {
         employees.insert({
           "picture": "avatars/placeholder-md.png",
-          "firstName": "First Name" + count,
+          "firstName": "First Name " + count,
           "lastName": "Last Name " + count,
           "jobTitle": "Software Engineer",
           "location": "Dallas, TX",
