@@ -6,11 +6,10 @@ var fs = require('fs'),
 
 exports.index = function(req, res, next) {
 
-    req.db.employees.find().toArray(function(err, result) {
+    req.db.employees.find({}).toArray(function(err, result) {
         if (err) {
             handleError(res, err);
         } else {
-
             result = _.chain(result).map(function(employee) {
                 employee.name = employee.firstName + ' ' + employee.lastName;
                 return employee;
@@ -24,5 +23,6 @@ exports.index = function(req, res, next) {
 };
 
 function handleError(res, err) {
+    console.log(err);
     return res.status(500).send(err);
 }
