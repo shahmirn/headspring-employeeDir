@@ -1,7 +1,7 @@
 var db = require('mongoskin').db('mongodb://localhost:27017/headspring?auto_reconnect', {safe:true});
 var login = db.collection('login');
 
-var ctrl = require('../controllers/login.js')
+var ctrl = require('../api/login/login.controller.js')
 
 var salt = ctrl.makeSalt();
 var password = ctrl.createPassword("admin", salt);
