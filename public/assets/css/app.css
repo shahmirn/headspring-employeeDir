@@ -17,6 +17,14 @@ div[ui-view] {
   height: 30px;
 }
 
+.ui-grid-top-panel-background,
+.ui-grid-top-panel,
+.ui-grid-no-row-overlay,
+.ui-grid-footer-panel-background,
+.ui-grid-footer-panel {
+  background: #f3f3f3;
+}
+
 /* Table styling */
 /*.th {
   background-color: #2e2e2e;

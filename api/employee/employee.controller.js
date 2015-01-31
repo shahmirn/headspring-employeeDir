@@ -24,5 +24,5 @@ exports.index = function(req, res, next) {
 };
 
 function handleError(res, err) {
-  return res.send(500, err);
+    return res.status(500).send(err);
 }
