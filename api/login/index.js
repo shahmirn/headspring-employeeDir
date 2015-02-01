@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     app.get('/api/login', function(req, res) {
         if (req.isAuthenticated()) {
-            res.status(200).send();
+            res.status(204).send();
         } else {
             res.sendStatus(401);
         }
@@ -17,7 +17,7 @@ module.exports = function(app) {
 
     app.delete('/api/login', function(req, res){
       req.logOut();
-      res.status(200).send();
+      res.status(204).send();
     });
 
     // app.get('/loggedin', function(req, res) {
