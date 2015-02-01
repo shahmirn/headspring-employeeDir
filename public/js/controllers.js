@@ -78,7 +78,6 @@ angular.module('hs.controllers', []).controller('MainController', function($scop
       $state.go('home');
     }, function() {
       toaster.pop('error', null, "Sign in failed.");
-      debugger;
     });
   };
 }).controller('LogoutController', function($scope, $state, Login, toaster) {
@@ -88,7 +87,6 @@ angular.module('hs.controllers', []).controller('MainController', function($scop
       $scope.model.showAdminControls = false;
       $state.go('home');
     }, function() {
-      debugger;
     });
   };
 
