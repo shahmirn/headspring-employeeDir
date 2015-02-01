@@ -5,6 +5,8 @@ angular.module('hs', [
   'ui.grid',
   'ui.grid.pagination',
   'toaster',
+  'ngAnimate',
+  'angular-loading-bar',
   'hs.controllers',
   'hs.services'
 ]).config(function($stateProvider, $urlRouterProvider) {
@@ -29,4 +31,6 @@ angular.module('hs', [
     url: "/logout",
     controller: 'LogoutController'
   });
-});
+}).config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+  cfpLoadingBarProvider.includeBar = false;
+}]);

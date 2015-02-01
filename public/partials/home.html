@@ -1,5 +1,17 @@
+<div class="container-fluid container-margin-top" ng-if="model.showAdminControls">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-primary pull-right">Add Employee</button>
+    </div>
+  </div>
+</div>
+
 <div class="container-fluid">
-  <div ui-grid="homeCtrl.gridOptions" ui-grid-pagination class="grid"></div>
+  <div class="row">
+    <div class="col-md-12">
+      <div ui-grid="homeCtrl.gridOptions" ui-grid-pagination class="grid"></div>
+    </div>
+  </div>
 </div>
 
 <!-- <div class="table">
