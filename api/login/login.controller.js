@@ -30,5 +30,5 @@ var validPassword = function(user, plainPassword) {
 exports.validPassword = validPassword;
 
 exports.loginRes = function(req, res) {
-    res.json({ username: req.user.username });
+    res.json();
 };

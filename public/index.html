@@ -10,6 +10,7 @@
 
     <!-- bower:css -->
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="components/angularjs-toaster/toaster.css" />
     <!-- endbower -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="lib/ui-grid/ui-grid-unstable.min.css" />
@@ -22,7 +23,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body ng-controller="MainController">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -39,11 +40,15 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/login" ng-if="!model.showAdminControls">Sign In</a></li>
+            <li><a href="#/logout" ng-if="model.showAdminControls">Sign Out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
+    <toaster-container toaster-options="{'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
 
     <div class="container-fluid">
       <div ui-view=""></div>
@@ -56,6 +61,8 @@
     <script src="components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
+    <script src="components/angular-animate/angular-animate.js"></script>
+    <script src="components/angularjs-toaster/toaster.js"></script>
     <!-- endbower -->
 
     <script src="lib/ui-grid/ui-grid-unstable.min.js"></script>

@@ -1,4 +1,6 @@
-angular.module('hs.controllers', []).controller('HomeController', function(Employee, uiGridConstants) {
+angular.module('hs.controllers', []).controller('MainController', function($scope) {
+  $scope.model = {};
+}).controller('HomeController', function($scope, Employee, Login, uiGridConstants) {
   var self = this;
 
   var getViewportWidth = function() {
@@ -9,6 +11,12 @@ angular.module('hs.controllers', []).controller('HomeController', function(Emplo
     }
   };
 
+  Login.query(function() {
+    $scope.model.showAdminControls = true;
+  }, function() {
+    $scope.model.showAdminControls = false;
+  });
+
   this.employees = Employee.query();
 
   var viewportWidth = $(window).width();
@@ -17,7 +25,7 @@ angular.module('hs.controllers', []).controller('HomeController', function(Emplo
   this.columns = [
     {
       name: 'picture',
-      cellTemplate: "<div class='ui-grid-cell-contents'><img class='avatar' src='{{row.entity.picture}}' /></div>",
+      cellTemplate: "<div class='ui-grid-cell-contents'><img class='avatar' ng-src='{{row.entity.picture}}' /></div>",
       enableFiltering: false,
       visible: visible.atLeast992
     },
@@ -62,4 +70,26 @@ angular.module('hs.controllers', []).controller('HomeController', function(Emplo
   $(window).resize(function() {
     hideColumns();
   });
+}).controller('LoginController', function($scope, $state, Login, toaster) {
+  this.login = function() {
+    Login.validate({username: this.username, password: this.password}, function() {
+      toaster.pop('success', null, "Signed in successfully!");
+      $scope.model.showAdminControls = true;
+      $state.go('home');
+    }, function() {
+      debugger;
+    });
+  };
+}).controller('LogoutController', function($scope, $state, Login, toaster) {
+  this.logout = function() {
+    Login['delete'](function() {
+      toaster.pop('success', null, "Signed out successfully!");
+      $scope.model.showAdminControls = false;
+      $state.go('home');
+    }, function() {
+      debugger;
+    });
+  };
+
+  this.logout();
 });

@@ -4,6 +4,7 @@ angular.module('hs', [
   'ui.router',
   'ui.grid',
   'ui.grid.pagination',
+  'toaster',
   'hs.controllers',
   'hs.services'
 ]).config(function($stateProvider, $urlRouterProvider) {
@@ -14,5 +15,17 @@ angular.module('hs', [
     templateUrl: 'partials/home.html',
     controller: 'HomeController',
     controllerAs: 'homeCtrl'
+  });
+
+  $stateProvider.state("login", {
+    url: "/login",
+    templateUrl: 'partials/login.html',
+    controller: 'LoginController',
+    controllerAs: 'loginCtrl'
+  });
+
+  $stateProvider.state("logout", {
+    url: "/logout",
+    controller: 'LogoutController'
   });
 });
