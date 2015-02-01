@@ -77,6 +77,7 @@ angular.module('hs.controllers', []).controller('MainController', function($scop
       $scope.model.showAdminControls = true;
       $state.go('home');
     }, function() {
+      toaster.pop('error', null, "Sign in failed.");
       debugger;
     });
   };
