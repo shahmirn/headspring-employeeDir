@@ -1,13 +1,14 @@
 'use strict';
 
-var crypto = require('crypto');
+var crypto = require('crypto'),
+    Login = require('./login.model');;
 
 exports.makeSalt = function() {
     //From: http://stackoverflow.com/questions/11520126/how-to-create-random-salt-hash-with-crypto
     return crypto.randomBytes(256).toString('base64');
-}
+};
 
-exports.createPassword = function(password, salt) {
+var createPassword = function(password, salt) {
     //From: https://github.com/madhums/node-express-mongoose-demo/blob/master/app/models/user.js
     if (!password) {
         return '';
@@ -20,4 +21,14 @@ exports.createPassword = function(password, salt) {
     } catch (err) {
       return '';
     }
-}
+};
+exports.createPassword = createPassword;
+
+var validPassword = function(user, plainPassword) {
+    return user.password === createPassword(plainPassword, user.salt);
+};
+exports.validPassword = validPassword;
+
+exports.loginRes = function(req, res) {
+    res.json({ username: req.user.username });
+};

@@ -1,22 +1,23 @@
 'use strict';
 
-var fs = require('fs'),
-    path = require('path'),
-    _ = require('underscore');
+var Employee = require('./employee.model');
 
 exports.index = function(req, res, next) {
 
-    req.db.employees.find({}).toArray(function(err, result) {
+    Employee.find(req.db, function(err, result) {
         if (err) {
             handleError(res, err);
         } else {
-            result = _.chain(result).map(function(employee) {
-                employee.name = employee.firstName + ' ' + employee.lastName;
-                return employee;
-            }).sortBy(function(employee) {
-                return employee.name;
-            }).value();
+            return res.status(200).json(result);
+        }
+    });
+};
 
+exports.show = function(req, res) {
+    Employee.findById(req.db, req.params.id, function(err, result) {
+        if (err) {
+            handleError(res, err);
+        } else {
             return res.status(200).json(result);
         }
     });
