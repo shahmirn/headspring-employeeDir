@@ -11,7 +11,7 @@ employees.remove({}, function(err, result) {
     var max = 30000;
     for (var count = 1; count <= max; count++) {
         employees.insert({
-          "picture": "avatars/placeholder-md.png",
+          "picture": "avatars/dustin-wells.jpg",
           "firstName": "First Name " + count,
           "lastName": "Last Name " + count,
           "jobTitle": "Software Engineer",

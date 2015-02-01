@@ -15,7 +15,10 @@ angular.module('hs.controllers').controller('HomeController', function($scope, E
     $scope.model.showAdminControls = false;
   });
 
-  this.employees = Employee.query();
+  $scope.show.loading = true;
+  this.employees = Employee.query(function() {
+    $scope.show.loading = false;
+  });
 
   var viewportWidth = $(window).width();
   var visible = getViewportWidth();
@@ -23,7 +26,7 @@ angular.module('hs.controllers').controller('HomeController', function($scope, E
   this.columns = [
     {
       name: 'picture',
-      cellTemplate: "<div class='ui-grid-cell-contents'><img class='avatar' ng-src='{{row.entity.picture}}' /></div>",
+      cellTemplate: "<div class='ui-grid-cell-contents'><img class='avatar img-circle' ng-src='{{row.entity.picture}}' /></div>",
       enableFiltering: false,
       visible: visible.atLeast992
     },

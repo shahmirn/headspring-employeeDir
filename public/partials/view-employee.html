@@ -1,0 +1,31 @@
+<div class="jumbotron">
+    <div class="container-fluid">
+        <img class="avatar-large img-circle" ng-src="{{viewEmployeeCtrl.employee.picture}}" />
+        <h1>{{viewEmployeeCtrl.employee.name}}</h1>
+    </div>
+</div>
+<div class="container-fluid">
+    <dl class="dl-horizontal">
+        <span>
+            <dt>Job Title</dt>
+            <dd>{{viewEmployeeCtrl.employee.jobTitle}}</dd>
+        </span>
+
+        <span>
+            <dt>Location</dt>
+            <dd>{{viewEmployeeCtrl.employee.location}}</dd>
+        </span>
+
+        <span>
+            <dt>Email</dt>
+            <dd>{{viewEmployeeCtrl.employee.email}}</dd>
+        </span>
+
+        <span>
+          <dt>Phone Numbers</dt>
+          <dd ng-repeat="phoneNumber in viewEmployeeCtrl.employee.phoneNumbers">
+              {{phoneNumber}}
+          </dd>
+        </span>
+    </dl>
+</div>
