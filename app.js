@@ -4,6 +4,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
+    compress = require('compression'),
     passport = require('passport'),
     mongoskin = require('mongoskin');
 
@@ -16,6 +17,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(compress());
 app.use(passport.initialize());
 app.use(passport.session());
 
