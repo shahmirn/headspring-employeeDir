@@ -15,16 +15,17 @@ angular.module('hs', [
     templateUrl: 'partials/home.html',
     controller: 'HomeController',
     controllerAs: 'homeCtrl'
-  });
-
-  $stateProvider.state("login", {
+  }).state("viewEmployee", {
+    url: "/employee/:id",
+    templateUrl: 'partials/view-employee.html',
+    controller: 'ViewEmployeeController',
+    controllerAs: 'viewEmployeeCtrl'
+  }).state("login", {
     url: "/login",
     templateUrl: 'partials/login.html',
     controller: 'LoginController',
     controllerAs: 'loginCtrl'
-  });
-
-  $stateProvider.state("logout", {
+  }).state("logout", {
     url: "/logout",
     controller: 'LogoutController'
   });
