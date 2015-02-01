@@ -4,11 +4,14 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    compress = require('compression'),
+    compression = require('compression'),
     passport = require('passport'),
     mongoskin = require('mongoskin');
 
 var app = express();
+app.use(compression({
+  threshold: 512
+}));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,7 +20,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(compress());
 app.use(passport.initialize());
 app.use(passport.session());
 
