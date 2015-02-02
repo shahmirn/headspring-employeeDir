@@ -7,6 +7,7 @@ angular.module('hs', [
   'toaster',
   'ngAnimate',
   'angular-loading-bar',
+  'ngUpload',
   'hs.controllers',
   'hs.services'
 ]).config(function($stateProvider, $urlRouterProvider) {

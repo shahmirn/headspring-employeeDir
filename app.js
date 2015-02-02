@@ -1,20 +1,22 @@
 'use strict';
 
 var express = require('express'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
+    bb = require('express-busboy'),
+    path = require('path'),
     session = require('express-session'),
     compression = require('compression'),
     passport = require('passport'),
     mongoskin = require('mongoskin');
 
 var app = express();
+bb.extend(app, {
+    upload: true,
+    path: path.join(__dirname, '.tmp')
+});
+
 app.use(compression({
   threshold: 512
 }));
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     secret: 'keyboard cat',
     resave: false,

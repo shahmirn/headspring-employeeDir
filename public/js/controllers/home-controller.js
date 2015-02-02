@@ -14,10 +14,12 @@ angular.module('hs.controllers').controller('HomeController', function($scope, E
   var viewportWidth = $(window).width();
   var visible = getViewportWidth();
 
+  var noCache = new Date().getTime();
+
   this.columns = [
     {
       name: 'picture',
-      cellTemplate: "<div class='ui-grid-cell-contents'><img class='avatar img-circle' ng-src='{{row.entity.picture}}' /></div>",
+      cellTemplate: "<div class='ui-grid-cell-contents'><img class='avatar img-circle' ng-src='{{row.entity.picture}}?noCache="+noCache+"' /></div>",
       enableFiltering: false,
       visible: visible.atLeast992
     },
