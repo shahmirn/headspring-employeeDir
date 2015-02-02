@@ -111,8 +111,12 @@ function handleError(res, err, status) {
 }
 
 function getFileSize(file) {
-    var stats = fs.statSync(file);
-    return stats["size"];
+    try {
+        var stats = fs.statSync(file);
+        return stats["size"];
+    } catch (e) {
+        return 0;
+    }
 }
 
 function handlePicture(req, id) {
