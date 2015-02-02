@@ -9,10 +9,7 @@ angular.module('hs.controllers').controller('HomeController', function($scope, E
     }
   };
 
-  $scope.show.loading = true;
-  this.employees = Employee.query(function() {
-    $scope.show.loading = false;
-  });
+  this.employees = Employee.query();
 
   var viewportWidth = $(window).width();
   var visible = getViewportWidth();

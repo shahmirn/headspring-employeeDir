@@ -17,6 +17,7 @@ div.grid.ui-grid {
 .avatar-large {
   max-height: 200px;
   max-width: 220px;
+  margin-right: 20px;
 }
 
 .dl-horizontal {

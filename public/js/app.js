@@ -22,6 +22,16 @@ angular.module('hs', [
     templateUrl: 'partials/view-employee.html',
     controller: 'ViewEmployeeController',
     controllerAs: 'viewEmployeeCtrl'
+  }).state("addEmployee", {
+    url: "/addEmployee",
+    templateUrl: 'partials/add-edit-employee.html',
+    controller: 'AddEmployeeController',
+    controllerAs: 'addEditEmployeeCtrl'
+  }).state("editEmployee", {
+    url: "/editEmployee/:id",
+    templateUrl: 'partials/add-edit-employee.html',
+    controller: 'EditEmployeeController',
+    controllerAs: 'addEditEmployeeCtrl'
   }).state("login", {
     url: "/login",
     templateUrl: 'partials/login.html',

@@ -1,8 +1,5 @@
 angular.module('hs.controllers').controller('MainController', function($scope, Login, toaster) {
   $scope.model = {};
-  $scope.show = {
-    loading: false
-  };
 
   Login.query(function() {
     $scope.model.showAdminControls = true;
