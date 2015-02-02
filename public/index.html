@@ -24,7 +24,7 @@
     <![endif]-->
   </head>
 
-  <body ng-controller="MainController">
+  <body ng-controller="MainController as mainCtrl">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav">
             <li><a href="#/">Home</a></li>
             <li><a href="#/login" ng-if="!model.showAdminControls">Sign In</a></li>
-            <li><a href="#/logout" ng-if="model.showAdminControls">Sign Out</a></li>
+            <li><a href="" ng-click="mainCtrl.logout()" ng-if="model.showAdminControls">Sign Out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -72,7 +72,6 @@
     <script src="js/controllers/home-controller.js"></script>
     <script src="js/controllers/view-employee-controller.js"></script>
     <script src="js/controllers/login-controller.js"></script>
-    <script src="js/controllers/logout-controller.js"></script>
     <script src="js/services.js"></script>
   </body>
 </html>

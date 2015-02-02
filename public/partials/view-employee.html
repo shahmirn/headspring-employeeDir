@@ -4,6 +4,16 @@
         <h1>{{viewEmployeeCtrl.employee.name}}</h1>
     </div>
 </div>
+<div class="container-fluid margin-bottom" ng-if="model.showAdminControls">
+  <div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-danger" ng-click="viewEmployeeCtrl.deleteEmployee()">Delete</button>
+        </span>
+    </div>
+  </div>
+</div>
 <div class="container-fluid">
     <dl class="dl-horizontal">
         <span>

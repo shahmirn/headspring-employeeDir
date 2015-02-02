@@ -1,9 +1,5 @@
 angular.module('hs.services', ['ngResource']).factory('Employee', function($resource) {
-  return $resource('api/employees/:employeeId')
+  return $resource('api/employees/:employeeId', {employeeId: '@_id'});
 }).factory('Login', function($resource) {
-  return $resource('api/login/:loginId', null, {
-    'validate': {
-        method: 'POST'
-    }
-  })
+  return $resource('api/login/:loginId');
 });

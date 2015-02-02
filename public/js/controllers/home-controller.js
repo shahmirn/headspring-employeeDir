@@ -1,4 +1,4 @@
-angular.module('hs.controllers').controller('HomeController', function($scope, Employee, Login, uiGridConstants) {
+angular.module('hs.controllers').controller('HomeController', function($scope, Employee, uiGridConstants) {
   var self = this;
 
   var getViewportWidth = function() {
@@ -8,12 +8,6 @@ angular.module('hs.controllers').controller('HomeController', function($scope, E
       atLeast992: viewportWidth >= 992
     }
   };
-
-  Login.query(function() {
-    $scope.model.showAdminControls = true;
-  }, function() {
-    $scope.model.showAdminControls = false;
-  });
 
   $scope.show.loading = true;
   this.employees = Employee.query(function() {

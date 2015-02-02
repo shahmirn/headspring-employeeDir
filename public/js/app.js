@@ -27,9 +27,6 @@ angular.module('hs', [
     templateUrl: 'partials/login.html',
     controller: 'LoginController',
     controllerAs: 'loginCtrl'
-  }).state("logout", {
-    url: "/logout",
-    controller: 'LogoutController'
   });
 }).config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeBar = false;
