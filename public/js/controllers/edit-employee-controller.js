@@ -1,4 +1,4 @@
-angular.module('hs.controllers').controller('EditEmployeeController', function($scope, $state, Employee, toaster) {
+angular.module('hs.controllers').controller('EditEmployeeController', function($state, Employee, toaster) {
     var self = this;
     Employee.get({employeeId: $state.params.id}, function(employee) {
         self.employee = employee;

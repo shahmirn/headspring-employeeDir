@@ -1,7 +1,11 @@
 module.exports = {
+    'test': [
+        'karma'
+    ],
     'build': [
         'bower:install',
-        'wiredep'
+        'wiredep',
+        'test'
     ],
     'serve': [
         'concurrent:serve'

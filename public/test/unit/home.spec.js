@@ -3,14 +3,23 @@ describe('HomeController', function() {
 
   var ctrl;
 
-  beforeEach(inject(function($controller){
+  beforeEach(inject(function($controller, _$httpBackend_) {
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('api/employees').respond(MOCK_EMPLOYEES);
+
     ctrl = $controller('HomeController');
+    $httpBackend.flush();
 
     spyOn(ctrl, "getViewportWidth").and.returnValue({
       atLeast768: true,
       atLeast992: false
     });
   }));
+
+  afterEach(function () {
+      $httpBackend.verifyNoOutstandingExpectation();
+      $httpBackend.verifyNoOutstandingRequest();
+  });
 
   it('should initialize the controller', function() {
     expect(ctrl).toBeTruthy();

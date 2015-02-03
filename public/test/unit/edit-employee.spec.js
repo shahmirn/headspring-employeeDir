@@ -1,14 +1,33 @@
-describe('AddEmployeeController', function() {
+describe('EditEmployeeController', function() {
   beforeEach(module('hs'));
 
-  var ctrl, toaster;
+  var ctrl, toaster, $httpBackend;
 
-  beforeEach(inject(function($controller, $injector){
-    ctrl = $controller('AddEmployeeController');
+  beforeEach(inject(function($controller, _$httpBackend_, $injector){
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('api/employees/1').respond(MOCK_EMPLOYEES[0]);
+
+    var state = {
+      params: {
+        id: 1
+      },
+      go: function() {
+
+      }
+    };
+
+    ctrl = $controller('EditEmployeeController', {$state: state});
+    $httpBackend.flush();
+    
     toaster = $injector.get('toaster');
 
     spyOn(toaster, 'pop').and.callThrough();
   }));
+
+  afterEach(function () {
+      $httpBackend.verifyNoOutstandingExpectation();
+      $httpBackend.verifyNoOutstandingRequest();
+  });
 
   it('should initialize the controller', function() {
     expect(ctrl).toBeTruthy();
