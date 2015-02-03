@@ -1,4 +1,4 @@
-angular.module('hs.controllers').controller('HomeController', function(Employee) {
+angular.module('hs.controllers').controller('HomeController', function(Employee, $filter) {
   var self = this;
 
   this.gridOptions = {
@@ -30,5 +30,8 @@ angular.module('hs.controllers').controller('HomeController', function(Employee)
       this.gridOptions.orderBy = orderBy;
       this.gridOptions.reverseOrder = false;
     }
-  }
+  };
+
+//homeCtrl.employees | filter:{name: homeCtrl.gridOptions.filters.name} | filter:{jobTitle: homeCtrl.gridOptions.filters.jobTitle} | filter:{location: homeCtrl.gridOptions.filters.location} | filter:{email: homeCtrl.gridOptions.filters.email}
+  
 });
