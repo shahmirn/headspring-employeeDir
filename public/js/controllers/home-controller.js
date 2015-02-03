@@ -1,7 +1,7 @@
-angular.module('hs.controllers').controller('HomeController', function($scope, Employee, uiGridConstants) {
+angular.module('hs.controllers').controller('HomeController', function(Employee, uiGridConstants) {
   var self = this;
 
-  var getViewportWidth = function() {
+  this.getViewportWidth = function() {
     var viewportWidth = $(window).width();
     return {
       atLeast768: viewportWidth >= 768,
@@ -11,8 +11,7 @@ angular.module('hs.controllers').controller('HomeController', function($scope, E
 
   this.employees = Employee.query();
 
-  var viewportWidth = $(window).width();
-  var visible = getViewportWidth();
+  var visible = this.getViewportWidth();
 
   var noCache = new Date().getTime();
 
@@ -52,17 +51,19 @@ angular.module('hs.controllers').controller('HomeController', function($scope, E
   };
 
   // Drop columns on screen resize
-  var hideColumns = function() {
-    var visible = getViewportWidth();
+  this.hideColumns = function() {
+    var visible = self.getViewportWidth();
 
     self.columns[0].visible = visible.atLeast992;
     self.columns[2].visible = visible.atLeast768;
     self.columns[3].visible = visible.atLeast768;
 
-    self.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+    if (self.gridApi) {
+      self.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+    }
   };
 
   $(window).resize(function() {
-    hideColumns();
+    self.hideColumns();
   });
 });
