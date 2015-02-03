@@ -9,11 +9,6 @@ describe('HomeController', function() {
 
     ctrl = $controller('HomeController');
     $httpBackend.flush();
-
-    spyOn(ctrl, "getViewportWidth").and.returnValue({
-      atLeast768: true,
-      atLeast992: false
-    });
   }));
 
   afterEach(function () {
@@ -25,13 +20,18 @@ describe('HomeController', function() {
     expect(ctrl).toBeTruthy();
   });
 
-  it('should have the columns defined', function() {
-    expect(ctrl.columns.length).toBe(5);
+  it('should correctly sort the grid', function() {
+    ctrl.sortGrid('jobTitle');
+
+    expect(ctrl.gridOptions.orderBy).toBe('jobTitle');
+    expect(ctrl.gridOptions.reverseOrder).toBe(false);
   });
 
-  it('should successfully hide columns on lower resolutions', function() {
-    ctrl.hideColumns();
-    expect(ctrl.columns[0].visible).toBeFalsy();
-    expect(ctrl.columns[2].visible).toBeTruthy();
+  it('should correctly reverse the sorting', function() {
+    ctrl.sortGrid('jobTitle');
+    ctrl.sortGrid('jobTitle');
+
+    expect(ctrl.gridOptions.orderBy).toBe('jobTitle');
+    expect(ctrl.gridOptions.reverseOrder).toBe(true);
   })
 });

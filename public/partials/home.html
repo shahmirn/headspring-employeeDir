@@ -6,10 +6,98 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid margin-top">
+  <form class="form-inline">
+    <div class="form-group">
+      <label>Filters</label>
+      <input type="text" 
+        class="form-control" 
+        ng-model="homeCtrl.gridOptions.filters.name" 
+        ng-model-options="{ debounce: 500 }" 
+        placeholder="Name" />
+    </div>
+    <div class="form-group">
+      <input type="text" 
+        class="form-control" 
+        ng-model="homeCtrl.gridOptions.filters.jobTitle" 
+        ng-model-options="{ debounce: 500 }" 
+        placeholder="Job Title" />
+    </div>
+    <div class="form-group">
+      <input type="text" 
+        class="form-control" 
+        ng-model="homeCtrl.gridOptions.filters.location" 
+        ng-model-options="{ debounce: 500 }" 
+        placeholder="Location" />
+    </div>
+    <div class="form-group">
+      <input type="text" 
+        class="form-control" 
+        ng-model="homeCtrl.gridOptions.filters.email" 
+        ng-model-options="{ debounce: 500 }" 
+        placeholder="Email" />
+    </div>
+  </form>
+</div>
+
+<div class="container-fluid margin-top">
   <div class="row">
     <div class="col-md-12">
-      <div ui-grid="homeCtrl.gridOptions" ui-grid-pagination class="grid"></div>
+      <!-- <div ui-grid="homeCtrl.gridOptions" ui-grid-pagination class="grid"></div> -->
+      <div class="table-responsive" ng-hide="homeCtrl.loading">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="hidden-xs hidden-sm">Picture</th>
+              <th>
+                <a ng-click="homeCtrl.sortGrid('name')">
+                  Name <span ng-class="{
+                    'glyphicon': homeCtrl.gridOptions.orderBy === 'name',
+                    'glyphicon-triangle-top': homeCtrl.gridOptions.orderBy === 'name' && homeCtrl.gridOptions.reverseOrder === false,
+                    'glyphicon-triangle-bottom': homeCtrl.gridOptions.orderBy === 'name' && homeCtrl.gridOptions.reverseOrder === true}"></span>
+                </a>
+              </th>
+              <th class="hidden-xs">
+                <a ng-click="homeCtrl.sortGrid('jobTitle')">
+                  Job Title <span ng-class="{
+                    'glyphicon': homeCtrl.gridOptions.orderBy === 'jobTitle',
+                    'glyphicon-triangle-top': homeCtrl.gridOptions.orderBy === 'jobTitle' && homeCtrl.gridOptions.reverseOrder === false,
+                    'glyphicon-triangle-bottom': homeCtrl.gridOptions.orderBy === 'jobTitle' && homeCtrl.gridOptions.reverseOrder === true}"></span>
+                </a>
+              </th>
+              <th class="hidden-xs">
+                <a ng-click="homeCtrl.sortGrid('location')">
+                  Location <span ng-class="{
+                    'glyphicon': homeCtrl.gridOptions.orderBy === 'location',
+                    'glyphicon-triangle-top': homeCtrl.gridOptions.orderBy === 'location' && homeCtrl.gridOptions.reverseOrder === false,
+                    'glyphicon-triangle-bottom': homeCtrl.gridOptions.orderBy === 'location' && homeCtrl.gridOptions.reverseOrder === true}"></span>
+                </a>
+              </th>
+              <th>
+                <a ng-click="homeCtrl.sortGrid('email')">
+                  Email <span ng-class="{
+                    'glyphicon': homeCtrl.gridOptions.orderBy === 'email',
+                    'glyphicon-triangle-top': homeCtrl.gridOptions.orderBy === 'email' && homeCtrl.gridOptions.reverseOrder === false,
+                    'glyphicon-triangle-bottom': homeCtrl.gridOptions.orderBy === 'email' && homeCtrl.gridOptions.reverseOrder === true}"></span>
+                </a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr sly-repeat="employee in homeCtrl.employees | filter:{name: homeCtrl.gridOptions.filters.name} | filter:{jobTitle: homeCtrl.gridOptions.filters.jobTitle} | filter:{location: homeCtrl.gridOptions.filters.location} | filter:{email: homeCtrl.gridOptions.filters.email} | orderBy:homeCtrl.gridOptions.orderBy:homeCtrl.gridOptions.reverseOrder | startFrom:(homeCtrl.gridOptions.currentPage-1)*homeCtrl.gridOptions.pageSize | limitTo:homeCtrl.gridOptions.pageSize">
+              <td class="hidden-xs hidden-sm"><img class="avatar img-circle" ng-src="{{employee.picture}}?noCache={{homeCtrl.noCache}}" /></td>
+              <td><a href='#/employee/{{employee._id}}'>{{employee.name}}<a/></td>
+              <td class="hidden-xs">{{employee.jobTitle}}</td>
+              <td class="hidden-xs">{{employee.location}}</td>
+              <td>{{employee.email}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="container-fluid">
+  <pagination total-items="(homeCtrl.employees | filter:{name: homeCtrl.gridOptions.filters.name} | filter:{jobTitle: homeCtrl.gridOptions.filters.jobTitle} | filter:{location: homeCtrl.gridOptions.filters.location} | filter:{email: homeCtrl.gridOptions.filters.email}).length || 0" ng-model="homeCtrl.gridOptions.currentPage" items-per-page="homeCtrl.gridOptions.pageSize" max-size="homeCtrl.gridOptions.maxNavSize" class="pull-right pagination-small" boundary-links="true" rotate="true" num-pages="homeCtrl.gridOptions.numPages"></pagination>
 </div>

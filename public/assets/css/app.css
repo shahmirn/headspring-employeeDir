@@ -5,6 +5,7 @@ body {
 
 .navbar-brand img {
   height: 20px;
+  display: none;
 }
 
 div.grid.ui-grid {
@@ -12,7 +13,7 @@ div.grid.ui-grid {
 }
 
 .avatar {
-  height: 30px;
+  height: 40px;
 }
 .avatar-large {
   max-height: 200px;
@@ -128,6 +129,29 @@ div.grid.ui-grid {
   border-top-color: #29d;
   border-left-color: #176b9a;
 }
+
+/* Table styling */
+/* Table styling */
+th {
+  background-color: #2e2e2e;
+}
+th, th a, th a:hover {
+  color: #eee;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+th a {
+  cursor: pointer;
+}
+th,
+tr:not(:last-child) {
+  border-bottom: 1px solid #c0c0c0;
+}
+
+td:not(:last-child) {
+  border-right: 1px dotted #c0c0c0;
+}
+/* End Table styling */
 
 @media (min-width: 768px) {
   .jumbotron h1 {

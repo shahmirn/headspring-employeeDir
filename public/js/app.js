@@ -2,14 +2,15 @@
 
 angular.module('hs', [
   'ui.router',
-  'ui.grid',
-  'ui.grid.pagination',
+  'ui.bootstrap',
+  'sly',
   'toaster',
   'ngAnimate',
   'angular-loading-bar',
   'ngUpload',
   'hs.controllers',
-  'hs.services'
+  'hs.services',
+  'hs.filters'
 ]).config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 

@@ -1,69 +1,34 @@
-angular.module('hs.controllers').controller('HomeController', function(Employee, uiGridConstants) {
+angular.module('hs.controllers').controller('HomeController', function(Employee) {
   var self = this;
 
-  this.getViewportWidth = function() {
-    var viewportWidth = $(window).width();
-    return {
-      atLeast768: viewportWidth >= 768,
-      atLeast992: viewportWidth >= 992
-    }
-  };
-
-  this.employees = Employee.query();
-
-  var visible = this.getViewportWidth();
-
-  var noCache = new Date().getTime();
-
-  this.columns = [
-    {
-      name: 'picture',
-      cellTemplate: "<div class='ui-grid-cell-contents'><img class='avatar img-circle' ng-src='{{row.entity.picture}}?noCache="+noCache+"' /></div>",
-      enableFiltering: false,
-      visible: visible.atLeast992
-    },
-    {
-      name: 'name', // Composite of firstName and lastName which is done by the server
-      cellTemplate: "<div class='ui-grid-cell-contents'><a href='#/employee/{{row.entity._id}}'>{{row.entity.name}}</a></div>",
-    },
-    {
-      name: 'jobTitle',
-      visible: visible.atLeast768
-    },
-    {
-      name: 'location',
-      visible: visible.atLeast768
-    },
-    {
-      name: 'email'
-    }
-  ];
-
   this.gridOptions = {
-    enableFiltering: true,
-    paginationPageSizes: [25, 50, 75],
-    paginationPageSize: 25,
-    columnDefs: this.columns,
-    onRegisterApi: function(gridApi) {
-      self.gridApi = gridApi;
+    filters: {
+      name: '',
+      jobTitle: '',
+      location: '',
+      email: ''
     },
-    data: this.employees
+    orderBy: 'name',
+    reverseOrder: false,
+    currentPage: 1,
+    pageSize: 25,
+    pageSizes: [25, 50, 75],
+    maxNavSize: 5
   };
 
-  // Drop columns on screen resize
-  this.hideColumns = function() {
-    var visible = self.getViewportWidth();
-
-    self.columns[0].visible = visible.atLeast992;
-    self.columns[2].visible = visible.atLeast768;
-    self.columns[3].visible = visible.atLeast768;
-
-    if (self.gridApi) {
-      self.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
-    }
-  };
-
-  $(window).resize(function() {
-    self.hideColumns();
+  this.loading = true;
+  this.employees = Employee.query(function() {
+    self.loading = false;
   });
+
+  this.noCache = new Date().getTime();
+
+  this.sortGrid = function(orderBy) {
+    if (this.gridOptions.orderBy === orderBy) {
+      this.gridOptions.reverseOrder = !this.gridOptions.reverseOrder;
+    } else {
+      this.gridOptions.orderBy = orderBy;
+      this.gridOptions.reverseOrder = false;
+    }
+  }
 });

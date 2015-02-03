@@ -17,6 +17,7 @@ module.exports = function(config) {
             '../../components/angular-loading-bar/build/loading-bar.js',
             '../../components/ngUpload/ng-upload.js',
             '../../components/angular-mocks/angular-mocks.js',
+            '../../components/angular-bootstrap/ui-bootstrap-tpls.js',
             // endbower
             '../../js/**/*.js',
             '../../lib/**/*.js',
