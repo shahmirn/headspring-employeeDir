@@ -32,10 +32,18 @@
         </span>
 
         <span>
-          <dt>Phone Numbers</dt>
-          <dd ng-repeat="phoneNumber in viewEmployeeCtrl.employee.phoneNumbers">
-              {{phoneNumber}}
-          </dd>
+          <dt>Home Phone</dt>
+          <dd>{{viewEmployeeCtrl.employee.homePhone}}</dd>
+        </span>
+
+        <span>
+          <dt>Office Phone</dt>
+          <dd>{{viewEmployeeCtrl.employee.officePhone}}</dd>
+        </span>
+
+        <span>
+          <dt>Cell Phone</dt>
+          <dd>{{viewEmployeeCtrl.employee.cellPhone}}</dd>
         </span>
     </dl>
 </div>

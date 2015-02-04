@@ -37,7 +37,7 @@ exports.update = function(req, res) {
     delete req.body._id;
     delete req.body.name;
 
-    req.body = handlePhoneNumbers(req.body);
+    // req.body = handlePhoneNumbers(req.body);
 
     if (req.files && 
         req.files.picture && 
@@ -66,7 +66,7 @@ exports.create = function(req, res) {
     delete req.body._id;
     delete req.body.name;
 
-    req.body = handlePhoneNumbers(req.body);
+    // req.body = handlePhoneNumbers(req.body);
 
     Employee.create(req.db, req.body, function(err, result) {
         if (err) {
@@ -133,10 +133,10 @@ function handlePicture(req, id) {
     return newName;
 }
 
-function handlePhoneNumbers(body) {
-    if (body && body.phoneNumbers && typeof body.phoneNumbers === "string") {
-        body.phoneNumbers = body.phoneNumbers.replace(/\s/g, '').split(",");
-    }
+// function handlePhoneNumbers(body) {
+//     if (body && body.phoneNumbers && typeof body.phoneNumbers === "string") {
+//         body.phoneNumbers = body.phoneNumbers.replace(/\s/g, '').split(",");
+//     }
 
-    return body;
-}
+//     return body;
+// }

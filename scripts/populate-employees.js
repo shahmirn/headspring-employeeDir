@@ -17,7 +17,9 @@ employees.remove({}, function(err, result) {
           "jobTitle": "Software Engineer",
           "location": "Dallas, TX",
           "email": "dummyEmail"+count+"@test.com",
-          "phoneNumbers": ["5555555555", "6666666666"]
+          "homePhone": "111-111-1111",
+          "officePhone": "222-222-2222 x"+count,
+          "cellPhone": "333-333-3333"
         }, function(err, result) {
             if (err) throw err;
             if (result) {
