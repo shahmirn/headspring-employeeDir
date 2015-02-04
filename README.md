@@ -22,7 +22,6 @@ Project Requirements
 ### Tech
 
 * [AngularJS] - HTML enhanced for web apps!
-* [Angular UI Grid] - A data grid for AngularJS, part of the AngularUI suite.
 * [Angular Loading Bar] - An automatic loading bar using angular interceptors.
 * [AngularUI Router] - The de-facto solution to flexible routing with nested views.
 * [ngUpload] - An AngularJS Service for uploading files.
