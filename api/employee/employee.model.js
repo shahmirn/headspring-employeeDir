@@ -1,8 +1,9 @@
 var _ = require('underscore');
 
-var employeeNameMapFn = function(employee) {
+var employeeMapFn = function(employee) {
     if (employee) {
         employee.name = employee.firstName + ' ' + employee.lastName;
+        employee.picture = employee.picture || 'avatars/placeholder-md.png';
     }
     return employee;
 };
@@ -12,7 +13,7 @@ exports.find = function(db, callback) {
         if (err) {
             callback(err);
         } else {
-            result = _.chain(result).map(employeeNameMapFn).sortBy(function(employee) {
+            result = _.chain(result).map(employeeMapFn).sortBy(function(employee) {
                 return employee.name;
             }).value();
 
@@ -26,7 +27,7 @@ exports.findById = function(db, id, callback) {
         if (err) {
             callback(err);
         } else {
-            result = employeeNameMapFn(result);
+            result = employeeMapFn(result);
             callback(null, result);
         }
     });
@@ -37,7 +38,7 @@ exports.create = function(db, data, callback) {
         if (err) {
             callback(err);
         } else {
-            result[0] = employeeNameMapFn(result[0]);
+            result[0] = employeeMapFn(result[0]);
             callback(null, result[0]);
         }
     });

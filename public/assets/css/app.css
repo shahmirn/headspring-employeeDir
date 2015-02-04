@@ -28,6 +28,7 @@ div.grid.ui-grid {
   display: block;
   padding: 10px;
   background-color: #eee;
+  min-height: 41px;
 }
 .dl-horizontal span:not(:last-child) {
   border-bottom: 1px dotted #c0c0c0;

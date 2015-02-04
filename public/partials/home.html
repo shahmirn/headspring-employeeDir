@@ -84,12 +84,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="employee in homeCtrl.employees | filter:{name: homeCtrl.gridOptions.filters.name} | filter:{jobTitle: homeCtrl.gridOptions.filters.jobTitle} | filter:{location: homeCtrl.gridOptions.filters.location} | filter:{email: homeCtrl.gridOptions.filters.email} | orderBy:homeCtrl.gridOptions.orderBy:homeCtrl.gridOptions.reverseOrder | startFrom:(homeCtrl.gridOptions.currentPage-1)*homeCtrl.gridOptions.pageSize | limitTo:homeCtrl.gridOptions.pageSize track by employee._id">
-              <td class="hidden-xs hidden-sm"><img class="avatar img-circle" ng-src="{{::employee.picture}}?noCache={{::homeCtrl.noCache}}" /></td>
-              <td><a href='#/employee/{{employee._id}}'>{{::employee.name}}<a/></td>
-              <td class="hidden-xs">{{::employee.jobTitle}}</td>
-              <td class="hidden-xs">{{::employee.location}}</td>
-              <td>{{::employee.email}}</td>
+            <tr sly-repeat="employee in homeCtrl.employees | filter:{name: homeCtrl.gridOptions.filters.name} | filter:{jobTitle: homeCtrl.gridOptions.filters.jobTitle} | filter:{location: homeCtrl.gridOptions.filters.location} | filter:{email: homeCtrl.gridOptions.filters.email} | orderBy:homeCtrl.gridOptions.orderBy:homeCtrl.gridOptions.reverseOrder | startFrom:(homeCtrl.gridOptions.currentPage-1)*homeCtrl.gridOptions.pageSize | limitTo:homeCtrl.gridOptions.pageSize">
+              <td class="hidden-xs hidden-sm"><img class="avatar img-circle" ng-src="{{employee.picture}}?noCache={{homeCtrl.noCache}}" /></td>
+              <td><a href='#/employee/{{employee._id}}'>{{employee.name}}<a/></td>
+              <td class="hidden-xs">{{employee.jobTitle}}</td>
+              <td class="hidden-xs">{{employee.location}}</td>
+              <td>{{employee.email}}</td>
             </tr>
           </tbody>
         </table>
@@ -100,15 +100,10 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       Page: {{homeCtrl.gridOptions.currentPage}} / {{homeCtrl.gridOptions.numPages}}
     </div>
-    <div class="col-md-4">
-      {{(homeCtrl.gridOptions.currentPage-1) * homeCtrl.gridOptions.pageSize + 1}} - 
-      {{(homeCtrl.gridOptions.currentPage-1) * homeCtrl.gridOptions.pageSize + 25|min:((homeCtrl.employees | filter:{name: homeCtrl.gridOptions.filters.name} | filter:{jobTitle: homeCtrl.gridOptions.filters.jobTitle} | filter:{location: homeCtrl.gridOptions.filters.location} | filter:{email: homeCtrl.gridOptions.filters.email}).length || 0)  }} of 
-      {{(homeCtrl.employees | filter:{name: homeCtrl.gridOptions.filters.name} | filter:{jobTitle: homeCtrl.gridOptions.filters.jobTitle} | filter:{location: homeCtrl.gridOptions.filters.location} | filter:{email: homeCtrl.gridOptions.filters.email}).length || 0}}
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <pagination total-items="(homeCtrl.employees | filter:{name: homeCtrl.gridOptions.filters.name} | filter:{jobTitle: homeCtrl.gridOptions.filters.jobTitle} | filter:{location: homeCtrl.gridOptions.filters.location} | filter:{email: homeCtrl.gridOptions.filters.email}).length || 0" ng-model="homeCtrl.gridOptions.currentPage" items-per-page="homeCtrl.gridOptions.pageSize" max-size="homeCtrl.gridOptions.maxNavSize" class="pull-right pagination-small" boundary-links="true" rotate="true" num-pages="homeCtrl.gridOptions.numPages"></pagination>
     </div>
   </div>
