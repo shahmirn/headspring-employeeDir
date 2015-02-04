@@ -1,4 +1,4 @@
-angular.module('hs.controllers').controller('HomeController', function(Employee, $filter) {
+angular.module('hs.controllers').controller('HomeController', function(Employee, toaster) {
   var self = this;
 
   this.gridOptions = {
@@ -16,10 +16,13 @@ angular.module('hs.controllers').controller('HomeController', function(Employee,
     maxNavSize: 5
   };
 
-  this.loading = true;
-  this.employees = Employee.query(function() {
-    self.loading = false;
-  });
+  this.getEmployees = function() {
+    this.loading = true;
+    this.employees = Employee.query(function() {
+      self.loading = false;
+    });
+  };
+  this.getEmployees();
 
   this.noCache = new Date().getTime();
 
@@ -32,6 +35,12 @@ angular.module('hs.controllers').controller('HomeController', function(Employee,
     }
   };
 
-//homeCtrl.employees | filter:{name: homeCtrl.gridOptions.filters.name} | filter:{jobTitle: homeCtrl.gridOptions.filters.jobTitle} | filter:{location: homeCtrl.gridOptions.filters.location} | filter:{email: homeCtrl.gridOptions.filters.email}
-  
+  this.deleteEmployee = function(employee) {
+    employee.$delete(function() {
+        toaster.pop('success', null, "Deleted employee successfully!");
+        self.getEmployees();
+    }, function() {
+        toaster.pop('error', null, "Failed to delete employee");
+    });
+  };  
 });

@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="container-fluid margin-top">
+<div class="container-fluid margin-top" ng-hide="homeCtrl.loading">
   <form class="form-inline">
     <div class="form-group">
       <label>Filters</label>
@@ -43,7 +43,6 @@
 <div class="container-fluid margin-top">
   <div class="row">
     <div class="col-md-12">
-      <!-- <div ui-grid="homeCtrl.gridOptions" ui-grid-pagination class="grid"></div> -->
       <div class="table-responsive" ng-hide="homeCtrl.loading">
         <table class="table table-bordered">
           <thead>
@@ -81,6 +80,9 @@
                     'glyphicon-triangle-bottom': homeCtrl.gridOptions.orderBy === 'email' && homeCtrl.gridOptions.reverseOrder === true}"></span>
                 </a>
               </th>
+              <th>
+                  Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -90,6 +92,25 @@
               <td class="hidden-xs">{{employee.jobTitle}}</td>
               <td class="hidden-xs">{{employee.location}}</td>
               <td>{{employee.email}}</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                    Actions
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li role="presentation">
+                      <a role="menuitem" tabindex="-1" href='#/employee/{{employee._id}}'>View</a>
+                    </li>
+                    <li role="presentation" ng-if="model.showAdminControls">
+                      <a role="menuitem" tabindex="-1" href="#/editEmployee/{{employee._id}}">Edit</a>
+                    </li>
+                    <li role="presentation" ng-if="model.showAdminControls">
+                      <a role="menuitem" tabindex="-1" href="" ng-click="homeCtrl.deleteEmployee(employee)">Delete</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -98,7 +119,7 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" ng-hide="homeCtrl.loading">
   <div class="row">
     <div class="col-md-6">
       Page: {{homeCtrl.gridOptions.currentPage}} / {{homeCtrl.gridOptions.numPages}}

@@ -158,9 +158,13 @@ td:not(:last-child) {
   margin-top: 0;
 }
 
+/* Actions Menu */
+.dropdown-menu {
+  min-width: 85px;
+}
+
 @media (min-width: 768px) {
   .jumbotron h1 {
-    display: inline;
-    white-space: nowrap;
+    font-size: 52px;
   }
 }
