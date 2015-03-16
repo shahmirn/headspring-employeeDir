@@ -7,20 +7,20 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files: [
             // bower:
-            '../../components/jquery/dist/jquery.js',
-            '../../components/angular/angular.js',
-            '../../components/bootstrap/dist/js/bootstrap.js',
-            '../../components/angular-ui-router/release/angular-ui-router.js',
-            '../../components/angular-resource/angular-resource.js',
-            '../../components/angular-animate/angular-animate.js',
-            '../../components/angularjs-toaster/toaster.js',
-            '../../components/angular-loading-bar/build/loading-bar.js',
-            '../../components/ngUpload/ng-upload.js',
-            '../../components/angular-mocks/angular-mocks.js',
-            '../../components/angular-bootstrap/ui-bootstrap-tpls.js',
+            '../../public/components/jquery/dist/jquery.js',
+            '../../public/components/angular/angular.js',
+            '../../public/components/bootstrap/dist/js/bootstrap.js',
+            '../../public/components/angular-ui-router/release/angular-ui-router.js',
+            '../../public/components/angular-resource/angular-resource.js',
+            '../../public/components/angular-animate/angular-animate.js',
+            '../../public/components/angularjs-toaster/toaster.js',
+            '../../public/components/angular-loading-bar/build/loading-bar.js',
+            '../../public/components/ngUpload/ng-upload.js',
+            '../../public/components/angular-mocks/angular-mocks.js',
+            '../../public/components/angular-bootstrap/ui-bootstrap-tpls.js',
             // endbower
-            '../../js/**/*.js',
-            '../../lib/**/*.js',
+            '../../public/js/**/*.js',
+            '../../public/lib/**/*.js',
 
             'mock-data.js',
             '*.spec.js'
@@ -67,7 +67,7 @@ module.exports = function(config) {
         captureTimeout: 60000,
 
         preprocessors: {
-            '../../js/**/*.js': ['coverage']
+            '../../public/js/**/*.js': ['coverage']
         },
 
         coverageReporter: {

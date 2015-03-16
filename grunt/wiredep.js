@@ -8,7 +8,7 @@ module.exports = {
   },
   test: {
     // Based on: https://github.com/stephenplusplus/grunt-wiredep/issues/86
-    src: 'public/test/unit/karma-unit.conf.js',
+    src: 'test/unit/karma-unit.conf.js',
     fileTypes: {
         js: {
             block: /(([\s\t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi,
