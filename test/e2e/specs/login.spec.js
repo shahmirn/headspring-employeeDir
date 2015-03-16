@@ -6,6 +6,9 @@ var commonUtils = require('../utils/commonUtils');
 
 describe('Login Page', function() {
   it('Should successfully load the homepage', function() {
+    // Make phantomjs happy: https://github.com/angular/protractor/issues/585
+    browser.driver.manage().window().setSize(1280, 800);
+
     browser.get('/');
     expect(browser.getTitle()).toEqual('Headspring Employee Directory');
   });
@@ -22,6 +25,6 @@ describe('Login Page', function() {
 
   it('should go back to the homepage and show a sign-out link', function() {
     commonUtils.waitForElement(home.elements.employeeTable);
-    expect(nav.elements.signOutLinkSel.getText()).toBe("Sign Out");
+    expect(nav.elements.signOutLinkSel.getInnerHtml()).toBe("Sign Out");
   });
 });

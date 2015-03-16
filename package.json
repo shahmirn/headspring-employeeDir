@@ -37,6 +37,7 @@
     "time-grunt": "^1.0.0",
     "protractor": "~1.8.0",
     "grunt-webdriver-manager": "shahmirn/grunt-webdriver-manager",
-    "grunt-protractor-runner": "~1.2.1"
+    "grunt-protractor-runner": "~1.2.1",
+    "phantomjs": "~1.9.16"
   }
 }

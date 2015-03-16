@@ -2,6 +2,8 @@ var nav = require('../elements/nav.js');
 
 describe('Home Page', function() {
   it('Should successfully load the homepage', function() {
+    // Make phantomjs happy: https://github.com/angular/protractor/issues/585
+    browser.driver.manage().window().setSize(1280, 800);
     browser.get('/');
 
     expect(browser.getTitle()).toEqual('Headspring Employee Directory');
@@ -12,7 +14,7 @@ describe('Home Page', function() {
     var signInLinkAllSel = nav.elements.signInLinkAllSel;
 
     expect(signInLinkAllSel.count()).toBe(1);
-    expect(signInLinkAllSel.first().getText()).toBe("Sign In");
-    // expect(nav.elements.signInLinkSel.getText()).toBe("Sign In");
+    expect(signInLinkAllSel.first().getInnerHtml()).toBe("Sign In");
+    // expect(nav.elements.signInLinkSel.getInnerHtml()).toBe("Sign In");
   });
 });
