@@ -1,4 +1,4 @@
-var nav = require('../elements/nav.js');
+var nav = require('../pageobjects/nav.js');
 
 describe('Home Page', function() {
   it('Should successfully load the homepage', function() {
@@ -11,10 +11,10 @@ describe('Home Page', function() {
 
   it('should make sure that there is a sign-in link', function() {
 
-    var signInLinkAllSel = nav.elements.signInLinkAllSel;
+    var signInLinkAllSel = nav.signInLinkAllSel;
 
     expect(signInLinkAllSel.count()).toBe(1);
     expect(signInLinkAllSel.first().getInnerHtml()).toBe("Sign In");
-    // expect(nav.elements.signInLinkSel.getInnerHtml()).toBe("Sign In");
+    // expect(nav.signInLinkSel.getInnerHtml()).toBe("Sign In");
   });
 });

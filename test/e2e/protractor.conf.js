@@ -8,7 +8,7 @@ exports.config = {
 
   capabilities: {
     'browserName': 'phantomjs',
-    // 'browserName': 'chrome',
+    //'browserName': 'chrome',
     'phantomjs.binary.path': require('phantomjs').path,
   },
 

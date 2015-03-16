@@ -1,6 +1,6 @@
-var nav = require('../elements/nav'),
-    login = require('../elements/login'),
-    home = require('../elements/home');
+var nav = require('../pageobjects/nav'),
+    login = require('../pageobjects/login'),
+    home = require('../pageobjects/home');
 
 var commonUtils = require('../utils/commonUtils');
 
@@ -14,17 +14,17 @@ describe('Login Page', function() {
   });
 
   it('should successfully log in', function() {
-    nav.elements.signInLinkSel.click();
+    nav.signInLinkSel.click();
 
-    commonUtils.waitForElement(login.elements.username);
+    commonUtils.waitForElement(login.username);
 
-    login.elements.username.sendKeys("admin");
-    login.elements.password.sendKeys("admin");
-    login.elements.submit.click();
+    login.username.sendKeys("admin");
+    login.password.sendKeys("admin");
+    login.submit.click();
   });
 
   it('should go back to the homepage and show a sign-out link', function() {
-    commonUtils.waitForElement(home.elements.employeeTable);
-    expect(nav.elements.signOutLinkSel.getInnerHtml()).toBe("Sign Out");
+    commonUtils.waitForElement(home.employeeTable);
+    expect(nav.signOutLinkSel.getInnerHtml()).toBe("Sign Out");
   });
 });
