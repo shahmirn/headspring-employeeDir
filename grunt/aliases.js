@@ -1,11 +1,15 @@
 module.exports = {
-    'test': [
+    'unit': [
         'karma'
+    ],
+    'e2e': [
+        'webdrivermanager:update',
+        'protractor'
     ],
     'build': [
         'bower:install',
         'wiredep',
-        'test'
+        'unit'
     ],
     'serve': [
         'concurrent:serve'

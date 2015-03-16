@@ -4,3 +4,4 @@ test_out
 .tmp
 **/Thumbs.db
 public/avatars
+public/js/**/*.html
