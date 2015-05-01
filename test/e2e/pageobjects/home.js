@@ -8,6 +8,11 @@
 
 var HomePage = function() {
     this.employeeTable = element(by.css(".table-responsive"));
+    this.addEmployeeButton = element(by.id("addEmployeeBtn"));
+
+    this.firstNameFilter = element(by.id("firstNameFilter"));
+
+    this.employeeVisibleRows = element.all(by.css(".table-responsive tbody tr:not([style*='display: none'])"));
 };
 
 module.exports = new HomePage();

@@ -3,12 +3,13 @@ exports.config = {
 
   specs: [
     'specs/home.spec.js',
-    'specs/login.spec.js'
+    'specs/login.spec.js',
+    'specs/addEmployee.spec.js'
   ],
 
   capabilities: {
-    'browserName': 'phantomjs',
-    //'browserName': 'chrome',
+    //'browserName': 'phantomjs',
+    'browserName': 'chrome',
     'phantomjs.binary.path': require('phantomjs').path,
   },
 
