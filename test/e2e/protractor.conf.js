@@ -13,6 +13,12 @@ exports.config = {
     'phantomjs.binary.path': require('phantomjs').path,
   },
 
+  // multiCapabilities: [{
+  //   browserName: 'firefox'
+  // }, {
+  //   browserName: 'chrome'
+  // }],
+
   baseUrl: 'http://localhost:3001/',
 
   framework: 'jasmine',
